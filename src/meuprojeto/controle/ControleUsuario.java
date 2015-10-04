@@ -130,7 +130,7 @@ public class ControleUsuario extends HttpServlet {
 
 			// cria novo usuario
 			Usuario u = new Usuario();
-			
+
 			Long id = Long.parseLong(request.getParameter("id"));
 
 			// define novos valores
@@ -147,7 +147,7 @@ public class ControleUsuario extends HttpServlet {
 
 			break;
 		case "remover":
-			
+
 			Long idRemove = Long.parseLong(request.getParameter("id"));
 
 			usuarioDao.remove(idRemove);

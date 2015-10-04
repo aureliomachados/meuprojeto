@@ -5,18 +5,69 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Cadastro de usuário</title>
+<jsp:include page="partes/cabecalho.jsp"></jsp:include>
 </head>
 <body>
-	<form action="ControleUsuario" method="post">
-		<!--  Tipo de ação enviada pelo usuário -->
-		<input type="hidden" name="acao" value="cadastrar">
-		
-		Nome: <input type="text" name="nome" required="true"><br/>
-		Login: <input type="text" name="login" required="true"><br/>
-		Senha: <input type="password" name="senha" required="true"><br/>
-		
-		<input type="submit" value="Cadastrar usuário"/>
-		
-	</form>
+
+	<jsp:include page="partes/menu.jsp"></jsp:include>
+
+	<div class="container">
+
+		<form class="form-horizontal" action="ControleUsuario" method="post">
+			<input type="hidden" name="acao" value="cadastrar">
+			<fieldset>
+
+				<!-- Form Name -->
+				<legend>Cadastro de usuário</legend>
+
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="nome">Nome</label>
+					<div class="col-md-4">
+						<input id="nome" name="nome" type="text"
+							placeholder="Digite seu nome" class="form-control input-md"
+							required="">
+
+					</div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="login">Login</label>
+					<div class="col-md-4">
+						<input id="login" name="login" type="text"
+							placeholder="Digite seu login" class="form-control input-md"
+							required="">
+
+					</div>
+				</div>
+
+				<!-- Password input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="senha">Senha</label>
+					<div class="col-md-4">
+						<input id="senha" name="senha" type="password"
+							placeholder="Digite sua senha" class="form-control input-md"
+							required="">
+
+					</div>
+				</div>
+
+				<!-- Button (Double) -->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="cadastrar"></label>
+					<div class="col-md-8">
+						<button type="submit" id="cadastrar" name="cadastrar"
+							class="btn btn-success">Cadastrar</button>
+						<button type="reset" id="cancelar" name="cancelar"
+							class="btn btn-warning">Cancelar</button>
+					</div>
+				</div>
+
+			</fieldset>
+		</form>
+	</div>
+
 </body>
 </html>

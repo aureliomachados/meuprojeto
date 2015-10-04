@@ -7,7 +7,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="/"><i
+			<a class="navbar-brand" href="#"><i
 				class="glyphicon glyphicon-book"></i> LOKA</a>
 		</div>
 
