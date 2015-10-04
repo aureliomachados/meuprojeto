@@ -92,24 +92,20 @@ public class UsuarioDao {
 		}
 	}
 
-	public boolean logar(Usuario usuario) {
-		boolean resultado = false;
+	public Usuario logar(Usuario usuario) {
+		Usuario u = null;
 		try {
 			Query query = manager
-					.createQuery("select u from Usuario u where u.login = :login and u.senha :senha");
+					.createQuery("select u from Usuario u where u.login = :login and u.senha = :senha");
 
 			query.setParameter("login", usuario.getLogin());
 			query.setParameter("senha", usuario.getSenha());
 
-			int valor = query.getFirstResult();
-			if (valor == 1) {
-				resultado = true;
-			} else {
-				resultado = false;
-			}
+			u = (Usuario) query.getSingleResult();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return resultado;
+		return u;
 	}
 }
