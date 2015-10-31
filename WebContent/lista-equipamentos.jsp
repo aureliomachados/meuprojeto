@@ -8,15 +8,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Lista de equipamentos</title>
+<jsp:include page="partes/cabecalho.jsp"></jsp:include>
 </head>
 <body>
-
+<br></br>
+<jsp:include page="partes/menu.jsp"></jsp:include>
 	<%
 		List<Equipamento> equipamentos = (List<Equipamento>) session
 				.getAttribute("equipamentos");
 	%>
+<div class="container">
 
-	<a href="cadastro-equipamento.jsp">Adicionar novo</a>
+		<div class="page-header">
+		<h1>Lista de Equipamentos</h1>
+			<a href="cadastro-equipamento.jsp" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Adicionar novo</a>
+		</div>
+
 	<br />
 	<br />
 	
@@ -28,15 +35,16 @@
 	}
 	%>
 
-	<table border="1">
+	<table border="1"
+	class="table table-bordered table-hover table-striped">
 		<thead>
 			<tr>
 				<th>Nome</th>
 				<th>Modelo</th>
 				<th>Valor da diária</th>
 				<th>Quantidade</th>
-				<th>Disponível</th>
 				<th>Tipo</th>
+				<th>Disponível</th>
 				<th>Editar</th>
 				<th>Excluir</th>
 			<tr />
@@ -51,15 +59,17 @@
 				<td><%=equipamento.getModelo()%></td>
 				<td><%=equipamento.getValorDiaria() %></td>
 				<td><%=equipamento.getQuantidade() %></td>
-				<td><%=(equipamento.isDisponivel())? "Sim" : "Não" %></td>
 				<td><%= equipamento.getTipo() %></td>
+				<td><%=(equipamento.isDisponivel())? "Sim" : "Não" %></td>
+				
 				<td><a
-					href="ControleEquipamento?acao=editar&id=<%=equipamento.getId()%>">editar</a></td>
+					href="ControleEquipamento?acao=editar&id=<%=equipamento.getId()%>" class="btn btn-warning"><i class="glyphicon glyphicon-edit"></i> editar</a></td>
+					
 				<td>
 					<form action="ControleEquipamento" method="post">
 						<input type="hidden" name="acao" value="remover"> 
 						<input type="hidden" name="id" value="<%=equipamento.getId()%>"> 
-						<input type="submit" value="excluir">
+						<input type="submit" value="excluir"class="btn btn-danger">
 					</form>
 				</td>
 			</tr>

@@ -14,7 +14,8 @@
 <jsp:include page="partes/cabecalho.jsp"></jsp:include>
 </head>
 <body>
-
+<br></br>
+<br></br>
 	<jsp:include page="partes/menu.jsp"></jsp:include>
 
 
@@ -27,7 +28,7 @@
 			<fieldset>
 
 				<!-- Form Name -->
-				<legend>Cadastro de usuário</legend>
+				<legend>Edição de usuário</legend>
 
 
 				<!-- Text input-->
@@ -68,7 +69,7 @@
 					<label class="col-md-4 control-label" for="cadastrar"></label>
 					<div class="col-md-8">
 						<button type="submit" id="cadastrar" name="cadastrar"
-							class="btn btn-success">Cadastrar</button>
+							class="btn btn-success">Salvar</button>
 						<a href="ControleUsuario?acao=listar" class="btn btn-warning">Cancelar</a>
 					</div>
 				</div>

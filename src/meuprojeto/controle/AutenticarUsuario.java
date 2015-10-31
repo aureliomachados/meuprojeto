@@ -60,7 +60,7 @@ public class AutenticarUsuario extends HttpServlet {
 		Usuario usuarioLogado = usuarioDao.logar(usuario);
 
 		if (usuarioLogado != null) {
-			request.getSession().setAttribute("uauarioLogado", usuarioLogado);
+			request.getSession().setAttribute("usuarioLogado", usuarioLogado);
 			request.getRequestDispatcher("home.jsp").forward(request, response);
 		} else {
 			response.sendRedirect("login.jsp");

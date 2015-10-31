@@ -8,6 +8,8 @@
 <jsp:include page="partes/cabecalho.jsp"></jsp:include>
 </head>
 <body>
+<br></br>
+<br></br>
 
 	<jsp:include page="partes/menu.jsp"></jsp:include>
 

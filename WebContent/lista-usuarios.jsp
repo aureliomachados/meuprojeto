@@ -16,6 +16,7 @@
 %>
 </head>
 <body>
+<br></br>
 
 	<jsp:include page="partes/menu.jsp"></jsp:include>
 

@@ -43,8 +43,9 @@ public class AutorizaUsuario implements Filter {
 
 		Object usuarioLogado =  req.getSession().getAttribute(
 				"usuarioLogado");
+		
 
-		if (req.getSession() == null && usuarioLogado == null) {
+		if (req.getSession() == null && usuarioLogado == null && !req.getRequestURI().equals("login.jsp")) {
 			//req.getRequestDispatcher("login.jsp").forward(request, response);
 			res.sendRedirect("login.jsp");
 		}

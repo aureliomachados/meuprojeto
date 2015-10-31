@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import meuprojeto.dao.EquipamentoDao;
 import meuprojeto.model.Equipamento;
-import meuprojeto.model.Usuario;
 
 /**
  * Servlet implementation class ControleEquipamento

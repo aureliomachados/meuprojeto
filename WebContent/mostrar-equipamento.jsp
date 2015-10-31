@@ -10,10 +10,18 @@
 	Equipamento equipamento = (Equipamento) request
 			.getAttribute("equipamento");
 %>
+<jsp:include page="partes/cabecalho.jsp"></jsp:include>
 <title>Usuário <%=equipamento.getNome()%></title>
 </head>
 <body>
-	<table border="1">
+<br></br>
+<br></br>
+<jsp:include page="partes/menu.jsp"></jsp:include>
+<legend>Equipamento</legend>
+<div class="container">
+
+		<div class="page-header">
+	<table border="1"class="table table-bordered table-hover table-striped">
 		<tr>
 			<th>Nome</th>
 			<td><%=equipamento.getNome()%>
@@ -39,5 +47,6 @@
 			<td><%=equipamento.getQuantidade()%></td>
 		</tr>
 	</table>
+	</div>
 </body>
 </html>
