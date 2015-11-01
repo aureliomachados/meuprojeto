@@ -32,7 +32,7 @@
 					class="table table-bordered table-hover table-striped">
 					<tr>
 						<th>Número da OS</th>
-						<td><%=os.getNumeroOs()%></td>
+						<td><%=os.getId()%></td>
 					</tr>
 					<tr>
 						<th>Nome</th>
@@ -115,6 +115,7 @@
 								<th>Equipamento</th>
 								<th>Tipo</th>
 								<th>Modelo</th>
+								<th>Remover</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -125,6 +126,15 @@
 								<td><%=equipamento.getNome()%></td>
 								<td><%=equipamento.getTipo()%></td>
 								<td><%=equipamento.getModelo()%></td>
+								<td>
+									<form action="ControleOs" method="post">
+										<input type="hidden" name="id_os" value="<%= os.getId() %>"/>
+										<input type="hidden" name="id_equipamento" value="<%= equipamento.getId() %>"/>
+										<input type="hidden" name="acao" value="remover-equipamento"/>
+										
+										<button class="btn btn-danger btn-sm" type="submit"><i class="glyphicon glyphicon-remove"></i> Remover</button>
+									</form>
+								</td>
 							</tr>
 							<%
 								}

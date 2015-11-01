@@ -10,10 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.dom4j.Branch;
-
-import com.sun.org.apache.bcel.internal.generic.NEW;
-
 import meuprojeto.dao.ClienteDao;
 import meuprojeto.dao.EquipamentoDao;
 import meuprojeto.dao.OsDAO;
@@ -96,6 +92,8 @@ public class ControleOs extends HttpServlet {
 		EntityManager manager = (EntityManager) request.getAttribute("manager");
 
 		OsDAO osDAO = new OsDAO(manager);
+		//cria o dao para equipamento
+		EquipamentoDao equipamentoDao = new EquipamentoDao(manager);
 
 		String nome = null;
 		String telefone = null;
@@ -133,8 +131,6 @@ public class ControleOs extends HttpServlet {
 			break;
 
 		case "cadastrar-equipamento":
-			//cria o dao para equipamento
-			EquipamentoDao equipamentoDao = new EquipamentoDao(manager);
 
 			//busca a os corrente com o parâmetro vindo da requisição
 			Os osParaSalvar = osDAO.getById(Long.parseLong(request
@@ -153,6 +149,19 @@ public class ControleOs extends HttpServlet {
 			//redireciona para a página que fez a requisição passando o id da os corrente.
 			response.sendRedirect("ControleOs?acao=mostrar&id=" + osParaSalvar.getId());
 
+			break;
+			
+		case "remover-equipamento":
+				Os osCorrente = osDAO.getById(Long.parseLong(request.getParameter("id_os")));
+				
+				Equipamento equipamentoCorrente = equipamentoDao.getById(Long.parseLong(request.getParameter("id_equipamento")));
+				
+				osCorrente.getEquipamentos().remove(equipamentoCorrente);
+				
+				osDAO.update(osCorrente);
+				
+				//redireciona para a página que fez a requisição passando o id da os corrente.
+				response.sendRedirect("ControleOs?acao=mostrar&id=" + osCorrente.getId());
 			break;
 		case "atualizar":
 

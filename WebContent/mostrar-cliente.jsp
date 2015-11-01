@@ -81,7 +81,7 @@
 					<tbody>
 						<% for(Os os : cliente.getOs()){%>
 							<tr>
-								<td><%= os.getNumeroOs() %></td>
+								<td><%= os.getId() %></td>
 								<td><a href="ControleOs?acao=mostrar&id=<%= os.getId() %>"><%= os.getId() %></a></td>
 							</tr>
 						<%} %>

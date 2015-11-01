@@ -1,13 +1,17 @@
 package meuprojeto.model;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Os {
@@ -17,8 +21,10 @@ public class Os {
 	// tera o valor gerado automaticamente
 	private long id;
 	private long numeroOs;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Calendar dataCriacao;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Equipamento> equipamentos;
 
 	@ManyToOne()
