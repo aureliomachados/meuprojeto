@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="meuprojeto.model.Os"%>
 <%@page import="meuprojeto.model.Cliente"%>
 <%@page import="meuprojeto.model.Usuario"%>
@@ -62,29 +63,46 @@
 						Os do cliente
 						<%=cliente.getNome()%></h2>
 				</div>
-				
+
 				<form action="ControleOs" method="post">
-					<input type="hidden" name="cliente_id" value="<%=cliente.getId() %>"/>
-					<input type="hidden" name="acao" value="cadastrar"/>
-					
-					<button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Adicionar nova OS</button>
+					<input type="hidden" name="cliente_id"
+						value="<%=cliente.getId()%>" /> <input type="hidden" name="acao"
+						value="cadastrar" />
+
+					<button type="submit" class="btn btn-primary">
+						<i class="glyphicon glyphicon-plus"></i> Adicionar nova OS
+					</button>
 				</form>
-				<br/>
-				
+				<br />
+
 				<table class="table table-bordered table-hover table-striped">
 					<thead>
 						<tr>
 							<th>Número</th>
 							<th>Id</th>
+							<th>Data de criação</th>
 						</tr>
 					</thead>
 					<tbody>
-						<% for(Os os : cliente.getOs()){%>
-							<tr>
-								<td><%= os.getId() %></td>
-								<td><a href="ControleOs?acao=mostrar&id=<%= os.getId() %>"><%= os.getId() %></a></td>
-							</tr>
-						<%} %>
+						<%
+							for (Os os : cliente.getOs()) {
+						%>
+						<tr>
+							<td><%=os.getId()%></td>
+							<td><a href="ControleOs?acao=mostrar&id=<%=os.getId()%>"><%=os.getId()%></a></td>
+							<td>
+								<%
+									SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
+										String dataFormatada = format.format(os.getDataCriacao()
+												.getTime());
+
+										out.print(dataFormatada);
+								%>
+							</td>
+						</tr>
+						<%
+							}
+						%>
 					</tbody>
 				</table>
 			</div>

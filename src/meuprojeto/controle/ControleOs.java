@@ -1,6 +1,7 @@
 package meuprojeto.controle;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -92,7 +93,7 @@ public class ControleOs extends HttpServlet {
 		EntityManager manager = (EntityManager) request.getAttribute("manager");
 
 		OsDAO osDAO = new OsDAO(manager);
-		//cria o dao para equipamento
+		// cria o dao para equipamento
 		EquipamentoDao equipamentoDao = new EquipamentoDao(manager);
 
 		String nome = null;
@@ -120,6 +121,7 @@ public class ControleOs extends HttpServlet {
 					.getParameter("cliente_id")));
 
 			Os os = new Os();
+			os.setDataCriacao(Calendar.getInstance());
 
 			os.setCliente(cliente);
 
@@ -132,36 +134,43 @@ public class ControleOs extends HttpServlet {
 
 		case "cadastrar-equipamento":
 
-			//busca a os corrente com o parâmetro vindo da requisição
+			// busca a os corrente com o parâmetro vindo da requisição
 			Os osParaSalvar = osDAO.getById(Long.parseLong(request
 					.getParameter("id_os")));
 
-			//busca o equipamento com o id passado como parâmetro na requisição. 
+			// busca o equipamento com o id passado como parâmetro na
+			// requisição.
 			Equipamento equipamento = equipamentoDao.getById(Long
 					.parseLong(request.getParameter("id_equipamento")));
 
-			//adiciona o equipamento na lista de equipamentos da os corrente.
+			// adiciona o equipamento na lista de equipamentos da os corrente.
 			osParaSalvar.getEquipamentos().add(equipamento);
 
-			//atualiza a os no banco de dados.
+			// atualiza a os no banco de dados.
 			osDAO.update(osParaSalvar);
-			
-			//redireciona para a página que fez a requisição passando o id da os corrente.
-			response.sendRedirect("ControleOs?acao=mostrar&id=" + osParaSalvar.getId());
+
+			// redireciona para a página que fez a requisição passando o id da
+			// os corrente.
+			response.sendRedirect("ControleOs?acao=mostrar&id="
+					+ osParaSalvar.getId());
 
 			break;
-			
+
 		case "remover-equipamento":
-				Os osCorrente = osDAO.getById(Long.parseLong(request.getParameter("id_os")));
-				
-				Equipamento equipamentoCorrente = equipamentoDao.getById(Long.parseLong(request.getParameter("id_equipamento")));
-				
-				osCorrente.getEquipamentos().remove(equipamentoCorrente);
-				
-				osDAO.update(osCorrente);
-				
-				//redireciona para a página que fez a requisição passando o id da os corrente.
-				response.sendRedirect("ControleOs?acao=mostrar&id=" + osCorrente.getId());
+			Os osCorrente = osDAO.getById(Long.parseLong(request
+					.getParameter("id_os")));
+
+			Equipamento equipamentoCorrente = equipamentoDao.getById(Long
+					.parseLong(request.getParameter("id_equipamento")));
+
+			osCorrente.getEquipamentos().remove(equipamentoCorrente);
+
+			osDAO.update(osCorrente);
+
+			// redireciona para a página que fez a requisição passando o id da
+			// os corrente.
+			response.sendRedirect("ControleOs?acao=mostrar&id="
+					+ osCorrente.getId());
 			break;
 		case "atualizar":
 
