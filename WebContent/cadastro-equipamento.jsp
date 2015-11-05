@@ -74,6 +74,8 @@
 		<label class="col-md-4 control-label" ></label>
 		<button type="submit" id="Cadastrar Equipamento" name="cadastrar"
 							class="btn btn-success">Cadastrar Equipamento</button>
+							<button type="reset" id="cancelar" name="cancelar"
+							class="btn btn-danger">Cancelar</button>
 		
 		
 	</form>

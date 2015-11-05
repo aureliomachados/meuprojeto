@@ -63,7 +63,7 @@
 						<button type="submit" id="cadastrar" name="cadastrar"
 							class="btn btn-success">Cadastrar</button>
 						<button type="reset" id="cancelar" name="cancelar"
-							class="btn btn-warning">Cancelar</button>
+							class="btn btn-danger">Cancelar</button>
 					</div>
 				</div>
 

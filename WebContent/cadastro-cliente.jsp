@@ -69,6 +69,8 @@
 		<label class="col-md-4 control-label" ></label>
 		<button type="submit" id="Cadastrar Cliente" name="cadastrar"
 							class="btn btn-success">Cadastrar Cliente</button>
+							<button type="reset" id="cancelar" name="cancelar"
+							class="btn btn-danger">Cancelar</button>
 		
 		
 	</form>
