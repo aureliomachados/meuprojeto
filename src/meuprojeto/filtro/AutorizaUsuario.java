@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet Filter implementation class AutorizaUsuario
  */
-@WebFilter("/*")
 public class AutorizaUsuario implements Filter {
 
 	/**
@@ -45,7 +44,7 @@ public class AutorizaUsuario implements Filter {
 				"usuarioLogado");
 		
 
-		if (req.getSession() == null && usuarioLogado == null && !req.getRequestURI().equals("login.jsp")) {
+		if (usuarioLogado == null && !(req.getRequestURI().endsWith("login.jsp") || req.getRequestURI().endsWith("AutenticarUsuario") || req.getRequestURI().contains("bower_components"))) {
 			//req.getRequestDispatcher("login.jsp").forward(request, response);
 			res.sendRedirect("login.jsp");
 		}

@@ -148,6 +148,18 @@ body, html {
 	color: rgb(12, 97, 33);
 }
 </style>
+
+<%
+	String mensagem = (String) request.getAttribute("mensagem");
+
+	if(mensagem != null){
+		%>
+		<script type="text/javascript">
+			alert("<%= mensagem%>");
+		</script>
+		<%
+	}
+%>
 </head>
 <body>
 <br></br>
@@ -166,7 +178,7 @@ body, html {
 					<form class="form-signin" action="AutenticaUsuario" method="post">
 						<span id="reauth-email" class="reauth-email"></span> <input
 							type="email" id="email" class="form-control"
-							placeholder="Digite seu email" name="email" required autofocus> <input
+							placeholder="Digite seu email" name="login" required autofocus> <input
 							type="password" id="senha" class="form-control"
 							placeholder="Digite sua senha" name="senha" required>
 						<button class="btn btn-lg btn-primary btn-block btn-signin"

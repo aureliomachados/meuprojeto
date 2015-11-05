@@ -32,8 +32,7 @@ public class AutenticarUsuario extends HttpServlet {
 			request.getSession().removeAttribute("usuarioLogado");
 			request.getSession().invalidate();
 
-			request.getRequestDispatcher("login.jsp")
-					.forward(request, response);
+			response.sendRedirect("login.jsp");
 		}
 	}
 
@@ -52,8 +51,7 @@ public class AutenticarUsuario extends HttpServlet {
 		usuario.setLogin(login);
 		usuario.setSenha(senha);
 
-		EntityManager manager = (EntityManager) request.getSession()
-				.getAttribute("manager");
+		EntityManager manager = (EntityManager) request.getAttribute("manager");
 
 		UsuarioDao usuarioDao = new UsuarioDao(manager);
 
@@ -63,7 +61,10 @@ public class AutenticarUsuario extends HttpServlet {
 			request.getSession().setAttribute("usuarioLogado", usuarioLogado);
 			request.getRequestDispatcher("home.jsp").forward(request, response);
 		} else {
-			response.sendRedirect("login.jsp");
+			request.setAttribute("mensagem", "Login ou senha incorretos.");
+			
+			request.getRequestDispatcher("login.jsp").forward(request, response);
+			//response.sendRedirect("login.jsp");
 		}
 	}
 
