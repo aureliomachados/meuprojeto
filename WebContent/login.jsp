@@ -177,7 +177,7 @@ body, html {
 					<p id="profile-name" class="profile-name-card"></p>
 					<form class="form-signin" action="AutenticaUsuario" method="post">
 						<span id="reauth-email" class="reauth-email"></span> <input
-							type="email" id="email" class="form-control"
+							type="text" id="email" class="form-control"
 							placeholder="Digite seu email" name="login" required autofocus> <input
 							type="password" id="senha" class="form-control"
 							placeholder="Digite sua senha" name="senha" required>
